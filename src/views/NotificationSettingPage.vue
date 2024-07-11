@@ -1,39 +1,38 @@
 <template>
-  <div :class="['d-flex', { 'bg-dark': isNightMode, 'bg-light': !isNightMode, 'rtl': isRTL }]">
+  <div :class="['d-flex', { 'rtl': isRTL }]" :style="pageStyle">
     <SidebarComponent :isNightMode="isNightMode" @toggle-night-mode="toggleNightMode" @toggle-language="toggleLanguage" />
-    <div :class="['flex-grow-1', { 'bg-dark text-white': isNightMode, 'bg-light text-dark': !isNightMode }]">
+    <div :class="['flex-grow-1', { 'text-white': isNightMode, 'text-dark': !isNightMode }]" :style="contentStyle">
       <NavigationComponent :isNightMode="isNightMode" />
       <!-- Notification Settings Content -->
       <div class="container-fluid p-4 mt-3" v-if="showNotificationSettings">
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
           <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="systemNotification" @change="toggleNotificationSettings" checked />
-          <label class="form-check-label  me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="systemNotification">{{ $t("System Notification") }}</label>
+          <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="systemNotification">{{ $t("System Notification") }}</label>
         </div>
-        <p :class="[' mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode ,'poppins-regular':!isRTL,'almarai-regular':isRTL}]">{{ $t("All Notifications Sending By GitTax Team.") }}</p>
+        <p :class="['mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode, 'poppins-regular': !isRTL, 'almarai-regular': isRTL }]">{{ $t("All Notifications Sending By GitTax Team.") }}</p>
 
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
           <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="billingCreated" checked />
           <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="billingCreated">{{ $t("Billing Created") }}</label>
         </div>
-        <p :class="[' mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode ,'poppins-regular':!isRTL,'almarai-regular':isRTL }]">{{ $t("All Bills Created By Source Or You Will Make A Successful Notification.") }}</p>
+        <p :class="['mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode, 'poppins-regular': !isRTL, 'almarai-regular': isRTL }]">{{ $t("All Bills Created By Source Or You Will Make A Successful Notification.") }}</p>
 
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
           <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="backupMaker" checked />
           <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="backupMaker">{{ $t("Backup Maker") }}</label>
         </div>
-        <p :class="[' mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode ,'poppins-regular':!isRTL,'almarai-regular':isRTL}]">{{ $t("When Your Backup Sent To You your Mail Will Get A Notification.") }}</p>
+        <p :class="['mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode, 'poppins-regular': !isRTL, 'almarai-regular': isRTL }]">{{ $t("When Your Backup Sent To You your Mail Will Get A Notification.") }}</p>
 
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
           <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="gotFreeMonth" checked />
           <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="gotFreeMonth">{{ $t("Got Free Month") }}</label>
         </div>
-        <p :class="[' mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode ,'poppins-regular':!isRTL,'almarai-regular':isRTL }]">{{ $t("If Someone Use Your Affiliate Code You Will Get Free 1 Month Just One Time.") }}</p>
+        <p :class="['mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode, 'poppins-regular': !isRTL, 'almarai-regular': isRTL }]">{{ $t("If Someone Use Your Affiliate Code You Will Get Free 1 Month Just One Time.") }}</p>
       </div>
       <CardComponent v-else :isNightMode="isNightMode" @card-checkbox-clicked="showNotificationSettingsContent" />
     </div>
   </div>
 </template>
-
 <script>
 import CardComponent from "@/components/CardComponent.vue";
 import NavigationComponent from "@/components/NavigationComponent.vue";
@@ -53,6 +52,16 @@ export default {
     contentLength() {
       return this.content.length;
     },
+    pageStyle() {
+      return {
+        backgroundColor: this.isNightMode ? '#424242' : '#fff',
+      };
+    },
+    contentStyle() {
+      return {
+        backgroundColor: this.isNightMode ? '#424242' : '#fff',
+      };
+    }
   },
   methods: {
     toggleNotificationSettings() {
@@ -91,7 +100,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .rtl {
   direction: rtl;
@@ -104,7 +112,7 @@ export default {
 }
 
 .custom-switch:checked {
-  --switch-color:#6c5ecf;
+  --switch-color: #6c5ecf;
   background-color: var(--switch-color);
 }
 

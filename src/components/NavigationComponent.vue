@@ -1,9 +1,9 @@
-<!--Navigation Component -->
 <template>
   <nav
     :class="`navbar navbar-expand-lg ${
-      isNightMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'
+      isNightMode ? 'navbar-dark' : 'navbar-light'
     }`"
+    :style="navStyle"
   >
     <div class="container-fluid">
       <span
@@ -45,25 +45,18 @@
               height="40"
               class="rounded-circle me-1"
             />
-            <!-- <small class="text muted text-secondary opacity-50 d-flex align-items-start">Welcome</small> -->
             <span class="poppins-medium mx-2">Ahmad Alsadiq</span>
           </a>
           <ul
-            class="dropdown-menu dropdown-menu-end bg-dark border border-secondary"
-            :class="`${
-              isNightMode
-                ? 'bg-dark border border-secondary'
-                : 'bg-white border border-secondary'
-            }`"
+            class="dropdown-menu dropdown-menu-end"
+            :class="dropdownMenuClass"
             aria-labelledby="navbarDropdown"
           >
             <router-link to="/" class="text-decoration-none">
               <li>
                 <a
-                  class="dropdown-item bg-dark text-light bg-dark text-light d-flex align-item-end poppins-medium"
-                  :class="`${
-                    isNightMode ? 'bg-dark text-light' : 'bg-white text-dark'
-                  }`"
+                  class="dropdown-item d-flex align-item-end poppins-medium"
+                  :class="dropdownItemClass"
                   href="#"
                 >
                   {{ $t("Logout") }}
@@ -76,7 +69,6 @@
     </div>
   </nav>
 </template>
-
 <script>
 export default {
   name: "NavigationComponent",
@@ -86,10 +78,21 @@ export default {
       default: false,
     },
   },
+  computed: {
+    navStyle() {
+      return {
+        backgroundColor: this.isNightMode ? '#424242' : '#f8f9fa',
+      };
+    },
+    dropdownMenuClass() {
+      return this.isNightMode ? 'bg-dark border border-secondary' : 'bg-white border border-secondary';
+    },
+    dropdownItemClass() {
+      return this.isNightMode ? 'bg-dark text-light' : 'bg-white text-dark';
+    }
+  }
 };
 </script>
-
 <style scoped>
-
 
 </style>

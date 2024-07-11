@@ -3,13 +3,13 @@
     :class="[
       'd-flex flex-column flex-shrink-0 p-3 border-end border-secondary border-opacity-25',
       {
-        'text-white bg-dark': isNightMode,
-        'text-dark bg-light': !isNightMode,
+        'text-white': isNightMode,
+        'text-dark': !isNightMode,
         'border-end border-secondary border-opacity-25': !isRTL,
         'border-start border-secondary border-opacity-25': isRTL,
       },
     ]"
-    style="width: 280px; height: 110vh"
+    :style="sidebarStyle"
   >
     <div class="d-flex justify-content-center">
       <img src="@/assets/gittax.png" alt="Logo" class="logo" width="60" />
@@ -41,7 +41,6 @@
           :class="[
             'nav-link d-flex align-items-center',
             { 'poppins-medium': !isRTL, 'almarai-regular': isRTL },
-
             isActive('invoices') ? activeClass : defaultClass,
           ]"
           @click="setActiveLink('invoices')"
@@ -66,7 +65,6 @@
                 :class="[
                   'nav-link',
                   { 'poppins-medium': !isRTL, 'almarai-regular': isRTL },
-
                   isActive('item1') ? activeClass : defaultClass,
                 ]"
                 @click="setActiveLink('item1')"
@@ -80,7 +78,6 @@
                 :class="[
                   'nav-link',
                   { 'poppins-medium': !isRTL, 'almarai-regular': isRTL },
-
                   isActive('item2') ? activeClass : defaultClass,
                 ]"
                 @click="setActiveLink('item2')"
@@ -97,7 +94,6 @@
           :class="[
             'nav-link d-flex align-items-center',
             { 'poppins-medium': !isRTL, 'almarai-regular': isRTL },
-
             isActive('services') ? activeClass : defaultClass,
           ]"
           @click="setActiveLink('services')"
@@ -118,7 +114,6 @@
             'nav-link d-flex align-items-center',
             isActive('videos') ? activeClass : defaultClass,
             { 'poppins-medium': !isRTL, 'almarai-regular': isRTL },
-
           ]"
           @click="setActiveLink('videos')"
         >
@@ -137,7 +132,6 @@
           :class="[
             'nav-link d-flex align-items-center',
             { 'poppins-medium': !isRTL, 'almarai-regular': isRTL },
-
             isActive('affiliate') ? activeClass : defaultClass,
           ]"
           @click="setActiveLink('affiliate')"
@@ -157,7 +151,6 @@
           :class="[
             'nav-link d-flex align-items-center',
             { 'poppins-medium': !isRTL, 'almarai-regular': isRTL },
-
             isActive('contact') ? activeClass : defaultClass,
           ]"
           @click="setActiveLink('contact')"
@@ -182,7 +175,6 @@
           :class="[
             'nav-link d-flex align-items-center',
             { 'poppins-medium': !isRTL, 'almarai-regular': isRTL },
-
             isActive('Permissions') ? activeClass : defaultClass,
           ]"
           @click="setActiveLink('Permissions')"
@@ -247,7 +239,6 @@
     <ModalComponent :isNightMode="isNightMode" :isRTL="isRTL" />
   </div>
 </template>
-
 <script>
 import ModalComponent from "@/components/ModalComponent.vue";
 
@@ -289,6 +280,11 @@ export default {
     },
     defaultIconClass() {
       return this.isNightMode ? "text-white" : "text-dark";
+    },
+    sidebarStyle() {
+      return {
+        backgroundColor: this.isNightMode ? '#424242' : '#f8f9fa',
+      };
     },
   },
   methods: {
@@ -338,7 +334,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .custom-switch {
   width: 35px;
