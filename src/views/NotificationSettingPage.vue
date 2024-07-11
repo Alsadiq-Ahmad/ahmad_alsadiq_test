@@ -1,10 +1,10 @@
 <template>
-  <div :class="['d-flex', { 'rtl': isRTL }]" :style="pageStyle">
+  <div :class="['d-flex vh-100', { 'rtl': isRTL }]" :style="pageStyle">
     <SidebarComponent :isNightMode="isNightMode" @toggle-night-mode="toggleNightMode" @toggle-language="toggleLanguage" />
-    <div :class="['flex-grow-1', { 'text-white': isNightMode, 'text-dark': !isNightMode }]" :style="contentStyle">
+    <div :class="['flex-grow-1 d-flex flex-column', { 'text-white': isNightMode, 'text-dark': !isNightMode }]" :style="contentStyle">
       <NavigationComponent :isNightMode="isNightMode" />
       <!-- Notification Settings Content -->
-      <div class="container-fluid p-4 mt-3" v-if="showNotificationSettings">
+      <div class="container-fluid p-4 mt-3 flex-grow-1" v-if="showNotificationSettings">
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
           <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="systemNotification" @change="toggleNotificationSettings" checked />
           <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="systemNotification">{{ $t("System Notification") }}</label>
@@ -55,11 +55,13 @@ export default {
     pageStyle() {
       return {
         backgroundColor: this.isNightMode ? '#424242' : '#fff',
+        minHeight: '100vh',
       };
     },
     contentStyle() {
       return {
         backgroundColor: this.isNightMode ? '#424242' : '#fff',
+        minHeight: '100vh',
       };
     }
   },

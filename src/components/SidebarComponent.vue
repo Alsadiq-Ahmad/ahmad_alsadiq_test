@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'd-flex flex-column flex-shrink-0 p-3 border-end border-secondary border-opacity-25',
+      'd-flex flex-column flex-shrink-0 p-3 border-end border-secondary border-opacity-25 vh-100',
       {
         'text-white': isNightMode,
         'text-dark': !isNightMode,
@@ -284,6 +284,7 @@ export default {
     sidebarStyle() {
       return {
         backgroundColor: this.isNightMode ? '#424242' : '#f8f9fa',
+        minHeight: '100vh',
       };
     },
   },

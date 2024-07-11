@@ -1,4 +1,4 @@
-<template>
+<template class="bg-custom">
   <nav
     :class="`navbar navbar-expand-lg ${
       isNightMode ? 'navbar-dark' : 'navbar-light'
@@ -94,5 +94,7 @@ export default {
 };
 </script>
 <style scoped>
-
+bg-custom{
+  background: #424242;
+}
 </style>
