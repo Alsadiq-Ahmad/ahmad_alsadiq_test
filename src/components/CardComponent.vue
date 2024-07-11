@@ -4,17 +4,16 @@
       <div class="col-sm-4" v-for="(card, index) in cards" :key="index">
         <div 
           :class="`card p-2 shadow mt-3 ${isNightMode ? 'bg-dark text-white' : 'bg-white text-dark'}`"
-          @click="toggleCard(index)"
         >
           <div class="card-body">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" :id="'flexCheckDefault' + index" :checked="card.checked">
-              <label class="form-check-label ms-2 fw-bold" :for="'flexCheckDefault' + index">
+              <input class="form-check-input custom-checkbox-color" type="checkbox" :id="'flexCheckDefault' + index" :checked="card.checked" @change="handleCheckboxChange">
+              <label class="form-check-label ms-2 poppins-semibold" :for="'flexCheckDefault' + index">
                 {{$t('Total Sales')}}
               </label>
             </div>
             <div class="ms-0">
-              <p class="card-text">{{$t('cardMsg')}}</p>
+              <p class="card-text poppins-medium">{{$t('cardMsg')}}</p>
             </div>
           </div>
         </div>
@@ -45,13 +44,17 @@ export default {
     };
   },
   methods: {
-    toggleCard(index) {
-      this.cards[index].checked = !this.cards[index].checked;
+    handleCheckboxChange() {
+      this.$emit('card-checkbox-clicked');   // Emit the event to notify parent component
     },
   },
 };
 </script>
 
 <style scoped>
-/* Add any custom styles here */
+
+
+.custom-checkbox-color:checked {
+  background-color: #6C5ECF;
+}
 </style>
