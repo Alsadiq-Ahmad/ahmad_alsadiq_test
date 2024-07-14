@@ -13,7 +13,7 @@
 .dark-bg, .dark-bg:hover {
     background-color: var(--dark-color);
 }
-.input-dark-bg{
+.input-dark-bg, .input-dark-bg:hover, .input-dark-bg:active, .input-dark-bg:focus{
     background-color: var(--input-background-color);
 }
 .login-bg{

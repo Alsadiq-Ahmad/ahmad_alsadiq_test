@@ -2,7 +2,7 @@
   <div class="bg-container">
     <div class="row no-gutters w-100">
       <div class="col-12 col-md-5 left-side login-bg d-flex flex-column justify-content-center align-items-center">
-        <img src="@/assets/gittax.png" class="img-fluid mb-2" alt="logo" width="110" />
+        <img src="@/assets/images/gittax.png" class="img-fluid mb-2" alt="logo" width="110" />
         <h2 class="text-white poppins-medium">Gittax</h2>
       </div>
       <div class="col-12 col-md-7 right-side white-bg black-color d-flex justify-content-center align-items-center">
@@ -36,7 +36,7 @@
                   <button type="submit" class="btn btn-warning w-100 mb-2 poppins-medium shadow-sm">{{ $t('Log In') }}</button>
                 </router-link>
                 <button type="button" class="btn btn-white border w-100 d-flex align-items-center justify-content-center poppins-medium shadow-sm">
-                  <img src="@/assets/google.png" width="20" class="mx-2" alt="Google logo" />
+                  <img src="@/assets/icons/google.svg" width="20" class="mx-2" alt="Google logo" />
                   {{ $t('Log In With Google') }}
                 </button>
                 <div class="text-center mt-3">
@@ -50,11 +50,6 @@
     </div>
   </div>
 </template>
-
-
-
-
-
 
 <script>
 export default {

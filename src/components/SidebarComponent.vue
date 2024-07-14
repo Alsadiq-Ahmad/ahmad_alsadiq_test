@@ -12,7 +12,7 @@
     :style="sidebarStyle"
   >
     <div class="d-flex justify-content-center">
-      <img src="@/assets/gittax.png" alt="Logo" class="logo" width="60" />
+      <img src="@/assets/images/gittax.png" alt="Logo" class="logo" width="60" />
     </div>
     <hr />
     <ul class="nav nav-pills flex-column mb-4">
@@ -164,7 +164,9 @@
           {{ $t("Contact Us") }}
           <span
             class="badge text-bg-danger"
-            :class="[{ 'ms-4 poppins-medium': !isRTL, 'me-4 almarai-regular': isRTL }]"
+            :class="[
+              { 'ms-4 poppins-medium': !isRTL, 'me-4 almarai-regular': isRTL },
+            ]"
             >{{ $t("contact-number") }}</span
           >
         </a>
@@ -191,39 +193,42 @@
     </ul>
 
     <ul class="nav nav-pills flex-column mb-4">
-      <div
-        class="form-check form-switch d-flex justify-content-center mb-3 me-4"
-      >
-        <input
-          class="form-check-input mx-0 switch-bg border-0"
-          type="checkbox"
-          role="switch"
-          id="languageSwitch"
-          @change="toggleLanguage"
-          :checked="isRTL"
-        />
-        <label class="form-check-label mx-2"
-        :class="{'almarai-regular':isRTL}"
-         for="languageSwitch">{{
-          $t("اللغة العربية")
-        }}</label>
-      </div>
-      <div class="form-check form-switch d-flex justify-content-center me-4">
-        <input
-          class="form-check-input mx-0 switch-bg border-0"
-          type="checkbox"
-          role="switch"
-          id="flexSwitchCheckChecked"
-          checked
-          @change="toggleNightMode"
-        />
-        <label class="form-check-label mx-2"
-        :class="{'almarai-regular':isRTL}"
-        for="flexSwitchCheckChecked">{{
-          $t("Night Mode")
-        }}</label>
-      </div>
-    </ul>
+  <div class="form-check form-switch d-flex justify-content-center mb-3 me-4">
+    <input
+      class="form-check-input mx-0 switch-bg custom-switch border-0"
+      type="checkbox"
+      role="switch"
+      id="languageSwitch"
+      @change="toggleLanguage"
+      :checked="isRTL"
+    />
+    <label
+      class="form-check-label mx-2"
+      :class="{ 'almarai-regular': isRTL }"
+      for="languageSwitch"
+    >
+      {{ $t("اللغة العربية") }}
+    </label>
+  </div>
+  <div class="form-check form-switch d-flex justify-content-center mb-3 me-4">
+    <input
+      class="form-check-input mx-0 switch-bg custom-switch border-0"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckChecked"
+      @change="toggleNightMode"
+      :checked="isNightMode"
+    />
+    <label
+      class="form-check-label mx-2"
+      :class="{ 'almarai-regular': isRTL }"
+      for="flexSwitchCheckChecked"
+    >
+      {{ $t("Night Mode") }}
+    </label>
+  </div>
+</ul>
+
     <div class="dropdown">
       <button
         class="btn yellow-bg text-dark-color w-100 poppins-semibold mt-3"
@@ -283,7 +288,7 @@ export default {
     },
     sidebarStyle() {
       return {
-        minHeight: '130vh',
+        minHeight: "130vh",
       };
     },
   },
@@ -295,36 +300,6 @@ export default {
     toggleNightMode() {
       this.$emit("toggle-night-mode");
     },
-    handleDragOver() {
-      this.isDragOver = true;
-    },
-    handleDragLeave() {
-      this.isDragOver = false;
-    },
-    handleDrop(event) {
-      this.isDragOver = false;
-      const files = event.dataTransfer.files;
-      if (files.length) {
-        this.uploadFile(files[0]);
-      }
-    },
-    handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        this.uploadFile(file);
-      }
-    },
-    uploadFile(file) {
-      this.uploadedFileName = file.name; // Store the file name
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.uploadedImage = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    triggerFileInput() {
-      this.$refs.fileInput.click();
-    },
     setActiveLink(link) {
       this.activeLink = link;
     },
@@ -334,6 +309,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-
-</style>
+<style scoped></style>
