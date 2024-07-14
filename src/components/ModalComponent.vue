@@ -49,9 +49,7 @@
                     'drag-over': isDragOver,
                   },
                 ]"
-                @dragover.prevent="handleDragOver"
-                @dragleave="handleDragLeave"
-                @drop.prevent="handleDrop"
+             
               >
                 <i class="bi bi-file-earmark-image fs-1"></i>
 
@@ -159,19 +157,7 @@ export default {
     },
   },
   methods: {
-    handleDragOver() {
-      this.isDragOver = true;
-    },
-    handleDragLeave() {
-      this.isDragOver = false;
-    },
-    handleDrop(event) {
-      this.isDragOver = false;
-      const files = event.dataTransfer.files;
-      if (files.length) {
-        this.uploadFile(files[0]);
-      }
-    },
+  
     handleFileUpload(event) {
       const file = event.target.files[0];
       if (file) {
