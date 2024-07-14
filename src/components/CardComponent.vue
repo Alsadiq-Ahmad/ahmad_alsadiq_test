@@ -3,18 +3,18 @@
     <div class="row">
       <div class="col-sm-4" v-for="(card, index) in cards" :key="index">
         <div 
-          :class="`card p-2 shadow mt-3 ${isNightMode ? 'text-white' : 'text-dark'}`"
-          :style="cardStyle"
+          :class="`card p-2 shadow mt-3 ${isNightMode ? 'text-white dark-bg' : 'text-dark white-bg'}`"
+          
         >
           <div class="card-body">
             <div class="form-check">
-              <input class="form-check-input custom-checkbox-color" type="checkbox" :id="'flexCheckDefault' + index" :checked="card.checked" @change="handleCheckboxChange">
+              <input class="form-check-input switch-bg" type="checkbox" :id="'flexCheckDefault' + index" :checked="card.checked" @change="handleCheckboxChange">
               <label class="form-check-label ms-2 poppins-semibold" :for="'flexCheckDefault' + index">
-                {{ $t('Total Sales') }}
+                {{ $t(card.label) }}
               </label>
             </div>
             <div class="ms-0">
-              <p class="card-text poppins-medium">{{ $t('cardMsg') }}</p>
+              <p class="card-text poppins-medium">{{ $t(card.text) }}</p>
             </div>
           </div>
         </div>
@@ -34,21 +34,14 @@ export default {
   data() {
     return {
       cards: [
-        { id: 1, checked: false },
-        { id: 2, checked: false },
-        { id: 3, checked: false },
-        { id: 4, checked: false },
-        { id: 5, checked: false },
-        { id: 6, checked: false },
+        { id: 1, checked: false, label: 'card.label1', text: 'card.text1' },
+        { id: 2, checked: false, label: 'card.label2', text: 'card.text2' },
+        { id: 3, checked: false, label: 'card.label3', text: 'card.text3' },
+        { id: 4, checked: false, label: 'card.label4', text: 'card.text4' },
+        { id: 5, checked: false, label: 'card.label5', text: 'card.text5' },
+        { id: 6, checked: false, label: 'card.label6', text: 'card.text6' },
       ],
     };
-  },
-  computed: {
-    cardStyle() {
-      return {
-        backgroundColor: this.isNightMode ? '#424242' : '#fff',
-      };
-    },
   },
   methods: {
     handleCheckboxChange() {
@@ -57,8 +50,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
-.custom-checkbox-color:checked {
-  background-color: #6C5ECF;
-}
+
 </style>

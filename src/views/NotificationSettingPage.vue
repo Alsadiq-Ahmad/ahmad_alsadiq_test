@@ -1,30 +1,30 @@
 <template>
-  <div :class="['d-flex vh-100', { 'rtl': isRTL }]" :style="pageStyle">
+  <div :class="['d-flex vh-100', { 'rtl': isRTL }]">
     <SidebarComponent :isNightMode="isNightMode" @toggle-night-mode="toggleNightMode" @toggle-language="toggleLanguage" />
-    <div :class="['flex-grow-1 d-flex flex-column', { 'text-white': isNightMode, 'text-dark': !isNightMode }]" :style="contentStyle">
+    <div :class="['flex-grow-1 d-flex flex-column', { 'text-white dark-bg': isNightMode, 'text-dark white-bg': !isNightMode }]" :style="contentStyle">
       <NavigationComponent :isNightMode="isNightMode" />
       <!-- Notification Settings Content -->
       <div class="container-fluid p-4 mt-3 flex-grow-1" v-if="showNotificationSettings">
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
-          <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="systemNotification" @change="toggleNotificationSettings" checked />
+          <input class="form-check-input custom-switch switch-bg me-1 border-0" type="checkbox" id="systemNotification" @change="toggleNotificationSettings" checked />
           <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="systemNotification">{{ $t("System Notification") }}</label>
         </div>
         <p :class="['mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode, 'poppins-regular': !isRTL, 'almarai-regular': isRTL }]">{{ $t("All Notifications Sending By GitTax Team.") }}</p>
 
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
-          <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="billingCreated" checked />
+          <input class="form-check-input custom-switch switch-bg me-1 border-0" type="checkbox" id="billingCreated" checked />
           <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="billingCreated">{{ $t("Billing Created") }}</label>
         </div>
         <p :class="['mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode, 'poppins-regular': !isRTL, 'almarai-regular': isRTL }]">{{ $t("All Bills Created By Source Or You Will Make A Successful Notification.") }}</p>
 
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
-          <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="backupMaker" checked />
+          <input class="form-check-input custom-switch switch-bg me-1 border-0" type="checkbox" id="backupMaker" checked />
           <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="backupMaker">{{ $t("Backup Maker") }}</label>
         </div>
         <p :class="['mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode, 'poppins-regular': !isRTL, 'almarai-regular': isRTL }]">{{ $t("When Your Backup Sent To You your Mail Will Get A Notification.") }}</p>
 
         <div class="form-check form-switch mb-0 d-flex align-items-center" :class="{ 'text-white': isNightMode, 'text-dark': !isNightMode }">
-          <input class="form-check-input custom-switch me-1 border-0" type="checkbox" id="gotFreeMonth" checked />
+          <input class="form-check-input custom-switch switch-bg me-1 border-0" type="checkbox" id="gotFreeMonth" checked />
           <label class="form-check-label me-5" :class="{'poppins-regular':!isRTL,'almarai-regular':isRTL}" :for="gotFreeMonth">{{ $t("Got Free Month") }}</label>
         </div>
         <p :class="['mt-1 mx-5', { 'text-white': isNightMode, 'text-dark': !isNightMode, 'poppins-regular': !isRTL, 'almarai-regular': isRTL }]">{{ $t("If Someone Use Your Affiliate Code You Will Get Free 1 Month Just One Time.") }}</p>
@@ -52,16 +52,9 @@ export default {
     contentLength() {
       return this.content.length;
     },
-    pageStyle() {
-      return {
-        backgroundColor: this.isNightMode ? '#424242' : '#fff',
-        minHeight: '100vh',
-      };
-    },
     contentStyle() {
       return {
-        backgroundColor: this.isNightMode ? '#424242' : '#fff',
-        minHeight: '100vh',
+        minHeight: '130vh',
       };
     }
   },
@@ -103,21 +96,11 @@ export default {
 };
 </script>
 <style scoped>
-.rtl {
-  direction: rtl;
-}
-
 /* Custom switch styles */
 .custom-switch {
   width: 45px;
   height: 25px;
 }
-
-.custom-switch:checked {
-  --switch-color: #6c5ecf;
-  background-color: var(--switch-color);
-}
-
 .custom-switch::before {
   width: 26px;
   height: 26px;

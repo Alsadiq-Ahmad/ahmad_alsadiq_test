@@ -3,8 +3,8 @@
     :class="[
       'd-flex flex-column flex-shrink-0 p-3 border-end border-secondary border-opacity-25 vh-100',
       {
-        'text-white': isNightMode,
-        'text-dark': !isNightMode,
+        'text-white dark-bg': isNightMode,
+        'text-dark nav-white-bg': !isNightMode,
         'border-end border-secondary border-opacity-25': !isRTL,
         'border-start border-secondary border-opacity-25': isRTL,
       },
@@ -28,7 +28,7 @@
         >
           <i
             :class="[
-              'bi bi-house-door-fill mx-2 rounded p-1',
+              'bi bi-house-door-fill mx-2 rounded p-1 icon-size',
               isActive('home') ? activeIconClass : defaultIconClass,
             ]"
           ></i>
@@ -50,7 +50,7 @@
         >
           <i
             :class="[
-              'bi bi-file-earmark-text-fill mx-2 rounded p-1 ',
+              'bi bi-file-earmark-text-fill mx-2 rounded p-1 icon-size',
               isActive('invoices') ? activeIconClass : defaultIconClass,
             ]"
           ></i>
@@ -100,7 +100,7 @@
         >
           <i
             :class="[
-              'bi bi-gear-fill mx-2 rounded p-1 ',
+              'bi bi-gear-fill mx-2 rounded p-1 icon-size',
               isActive('services') ? activeIconClass : defaultIconClass,
             ]"
           ></i>
@@ -119,7 +119,7 @@
         >
           <i
             :class="[
-              'bi bi-camera-video-fill mx-2 rounded p-1',
+              'bi bi-camera-video-fill mx-2 rounded p-1 icon-size',
               isActive('videos') ? activeIconClass : defaultIconClass,
             ]"
           ></i>
@@ -138,7 +138,7 @@
         >
           <i
             :class="[
-              'bi bi-person-circle mx-2 rounded p-1',
+              'bi bi-person-circle mx-2 rounded p-1 icon-size',
               isActive('affiliate') ? activeIconClass : defaultIconClass,
             ]"
           ></i>
@@ -157,7 +157,7 @@
         >
           <i
             :class="[
-              'bi bi-envelope-fill mx-2 rounded p-1',
+              'bi bi-envelope-fill mx-2 rounded p-1 icon-size',
               isActive('contact') ? activeIconClass : defaultIconClass,
             ]"
           ></i>
@@ -181,7 +181,7 @@
         >
           <i
             :class="[
-              'bi bi-person-fill-lock mx-2 rounded p-1',
+              'bi bi-person-fill-lock mx-2 rounded p-1 icon-size',
               isActive('Permissions') ? activeIconClass : defaultIconClass,
             ]"
           ></i>
@@ -195,7 +195,7 @@
         class="form-check form-switch d-flex justify-content-center mb-3 me-4"
       >
         <input
-          class="form-check-input mx-0 custom-switch border-0"
+          class="form-check-input mx-0 switch-bg border-0"
           type="checkbox"
           role="switch"
           id="languageSwitch"
@@ -210,7 +210,7 @@
       </div>
       <div class="form-check form-switch d-flex justify-content-center me-4">
         <input
-          class="form-check-input mx-0 custom-switch border-0"
+          class="form-check-input mx-0 switch-bg border-0"
           type="checkbox"
           role="switch"
           id="flexSwitchCheckChecked"
@@ -226,7 +226,7 @@
     </ul>
     <div class="dropdown">
       <button
-        class="btn btn-warning w-100 poppins-semibold mt-3"
+        class="btn yellow-bg text-dark-color w-100 poppins-semibold mt-3"
         type="button"
         data-bs-toggle="modal"
         data-bs-target="#testimonialModal"
@@ -268,23 +268,22 @@ export default {
       return this.content.length;
     },
     activeClass() {
-      return this.isNightMode ? "text-warning" : "text-warning";
+      return this.isNightMode ? "yellow-color" : "yellow-color";
     },
     defaultClass() {
       return this.isNightMode ? "text-white" : "text-dark";
     },
     activeIconClass() {
       return this.isNightMode
-        ? "bg-warning text-dark"
-        : "bg-light text-warning";
+        ? "yellow-bg text-dark-color"
+        : "bg-light yellow-color";
     },
     defaultIconClass() {
-      return this.isNightMode ? "text-white" : "text-dark";
+      return this.isNightMode ? "text-white unhover-icon-bg" : "text-dark";
     },
     sidebarStyle() {
       return {
-        backgroundColor: this.isNightMode ? '#424242' : '#f8f9fa',
-        minHeight: '100vh',
+        minHeight: '130vh',
       };
     },
   },
@@ -336,13 +335,5 @@ export default {
 };
 </script>
 <style scoped>
-.custom-switch {
-  width: 35px;
-  height: 18px;
-}
 
-.custom-switch:checked {
-  --switch-color: #6c5ecf;
-  background-color: var(--switch-color);
-}
 </style>

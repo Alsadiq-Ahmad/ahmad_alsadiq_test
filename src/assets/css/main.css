@@ -1,0 +1,100 @@
+.custom-switch {
+  width: 35px;
+  height: 18px;
+}
+
+.icon-size {
+  width: 38px;
+  height: 38px;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashed-border {
+  border-style: dashed;
+}
+.textarea-size {
+  resize: none;
+}
+.text-counter {
+  position: absolute;
+  top: 85%;
+  right: 22px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+}
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+/* -> login-bg*/
+.left-side {
+  /* background-color: #8f8f8f; */
+  /* color: white; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/*-> white-bg  black-color */
+.right-side {
+  /* background-color: white;
+  color: black; */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 80%;
+  transform: translateY(-75%);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.icon-right {
+  right: 10px;
+}
+
+.icon-left {
+  left: 10px;
+}
+
+.language-switcher {
+  cursor: pointer;
+}
+
+#login {
+  max-width: 450px;
+  width: 100%;
+}
+.rtl {
+  direction: rtl;
+} 

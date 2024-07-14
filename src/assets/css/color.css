@@ -1,0 +1,52 @@
+:root {
+    --switch-color: #6c5ecf; /* Switch background color */
+    --main-yellow-color: #FEDD59; /* Custom yellow */
+    --dark-color: #424242; /* Custom dark */
+    --medium-dark-color: #555555; /* Custom light dark */
+    --input-background-color: #5F5F5F; /* Custom dark color input */
+    --login-background-color: #8f8f8f; /* Login background color */
+    --white-color: #ffffff; /* White color */
+    --black-color: #000000; /* Black color */
+    --nav-white-bg:#f8f9fa;
+}
+
+.dark-bg, .dark-bg:hover {
+    background-color: var(--dark-color);
+}
+.input-dark-bg{
+    background-color: var(--input-background-color);
+}
+.login-bg{
+    background-color: var(--login-background-color);
+}
+.nav-white-bg{
+    background-color: var(--nav-white-bg);
+}
+.dark-border{
+    border-color: var(--medium-dark-color);
+}
+.switch-bg:checked {
+    background-color: var(--switch-color);
+}
+
+.yellow-bg, .yellow-bg:hover {
+    background-color: var(--main-yellow-color);
+}
+
+.yellow-color, .yellow-color:hover, .yellow-color:active, .yellow-color:focus {
+    color: var(--main-yellow-color);
+}
+
+.text-dark-color, .text-dark-color:hover, .text-dark-color:active, .text-dark-color:focus {
+    color: var(--dark-color);
+}
+
+.unhover-icon-bg {
+    background-color: var(--medium-dark-color);
+}
+.white-bg{
+    background-color: var(--white-color);
+}
+.black-color{
+    color: var(--black-color);
+}
